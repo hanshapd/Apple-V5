@@ -3,23 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apple 2025 Search</title>
+    <title>Apple-Style Search</title>
     <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
 </head>
 <body>
-
-    <!-- Search Icon -->
-    <div class="search-icon" id="openSearch">&#128269;</div>
-
-    <!-- Fullscreen Search Modal -->
-    <div class="search-overlay" id="searchModal">
-        <div class="search-container">
-            <input type="text" id="searchInput" placeholder="Search apple.com">
-            <span class="close" id="closeSearch">&times;</span>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo"></a>
+            <ul class="nav-links">
+                <li><a href="#">Mac</a></li>
+                <li><a href="#">iPad</a></li>
+                <li><a href="#">iPhone</a></li>
+                <li><a href="#">Watch</a></li>
+                <li><a href="#">AirPods</a></li>
+                <li><a href="#">TV & Home</a></li>
+                <li><a href="#">Entertainment</a></li>
+                <li><a href="#">Accessories</a></li>
+                <li><a href="#">Support</a></li>
+            </ul>
+            <div class="nav-icons">
+                <button class="search-icon" id="searchButton">
+                    <img src="search-icon.svg" alt="Search">
+                </button>
+                <a href="#" class="cart-icon">🛒</a>
+            </div>
         </div>
-        <ul id="searchResults"></ul>
-    </div>
+    </nav>
 
-    <script src="script.js"></script>
+    <!-- Search Overlay -->
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-box">
+            <div class="search-header">
+                <img src="search-icon.svg" alt="Search">
+                <input type="text" id="searchInput" placeholder="Search apple.com">
+                <button class="close-btn" id="closeSearch">
+                    <img src="close-icon.svg" alt="Close">
+                </button>
+            </div>
+            <div class="search-results" id="searchResults"></div>
+        </div>
+    </div>
 </body>
 </html>
