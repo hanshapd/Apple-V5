@@ -1,13 +1,23 @@
+/* ✅ Apple’s Official Colors */
+:root {
+    --apple-black: rgba(0, 0, 0, 0.8);
+    --apple-light-gray: #f5f5f7;
+    --apple-white: rgba(255, 255, 255, 0.95);
+    --apple-border-gray: rgba(0, 0, 0, 0.1);
+    --apple-hover-gray: rgba(0, 0, 0, 0.05);
+    --apple-shadow: rgba(0, 0, 0, 0.3);
+}
+
 /* General Styles */
 body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Arial", sans-serif;
-    background-color: #f5f5f7;
+    background-color: var(--apple-light-gray);
 }
 
-/* Apple Navbar */
+/* Apple-Style Navbar */
 .navbar {
-    background: rgba(0, 0, 0, 0.8);
+    background: var(--apple-black);
     backdrop-filter: blur(20px);
     color: white;
     padding: 12px 20px;
@@ -16,57 +26,6 @@ body {
     top: 0;
     left: 0;
     z-index: 1000;
-    transition: background 0.3s ease;
-}
-
-.nav-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: auto;
-}
-
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-}
-
-.nav-links li {
-    display: inline;
-}
-
-.nav-links a {
-    color: white;
-    text-decoration: none;
-    font-size: 14px;
-    padding: 8px 12px;
-    transition: color 0.3s;
-}
-
-.nav-links a:hover {
-    color: #ccc;
-}
-
-/* Search & Cart Icons */
-.nav-icons {
-    display: flex;
-    gap: 15px;
-    align-items: center;
-}
-
-.search-icon,
-.close-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-}
-
-.search-icon img,
-.close-btn img {
-    width: 22px;
-    height: 22px;
 }
 
 /* Search Overlay */
@@ -83,53 +42,94 @@ body {
     align-items: center;
     opacity: 0;
     transform: scale(1.05);
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    transition: opacity 0.4s ease-in-out, transform 0.3s ease-in-out;
 }
 
+/* Smooth Opening Animation */
 .search-overlay.visible {
     opacity: 1;
     transform: scale(1);
 }
 
-/* Search Box */
+/* Apple-Style Search Box */
 .search-box {
-    width: 60%;
-    background: rgba(255, 255, 255, 0.9);
+    width: 50%;
+    max-width: 600px;
+    background: var(--apple-white);
     backdrop-filter: blur(20px);
-    padding: 15px;
-    border-radius: 12px;
-    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    border-radius: 14px;
+    box-shadow: 0px 10px 30px var(--apple-shadow);
     position: relative;
-    animation: fadeIn 0.3s ease forwards;
+    animation: fadeSlideIn 0.4s ease-out forwards;
+    transform: translateY(-10px);
+    opacity: 0;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .search-overlay {
-        align-items: flex-start;
-        padding-top: 50px;
-    }
-
-    .search-box {
-        width: 95%;
-        border-radius: 0;
-        box-shadow: none;
-        animation: slideDown 0.3s ease forwards;
-    }
-
-    #searchInput {
-        font-size: 20px;
-        padding: 15px;
-    }
-}
-
-@keyframes slideDown {
+/* Fade & Slide Animation */
+@keyframes fadeSlideIn {
     from {
-        transform: translateY(-20px);
         opacity: 0;
+        transform: translateY(-20px);
     }
     to {
-        transform: translateY(0);
         opacity: 1;
+        transform: translateY(0);
     }
+}
+
+/* Search Input */
+.search-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border-bottom: 1px solid var(--apple-border-gray);
+    padding: 10px 0;
+}
+
+#searchInput {
+    flex: 1;
+    padding: 12px;
+    font-size: 18px;
+    border: none;
+    background: none;
+    outline: none;
+    font-family: inherit;
+    transition: font-size 0.3s ease-in-out;
+}
+
+#searchInput:focus {
+    font-size: 20px;
+}
+
+/* Search Results */
+.search-results {
+    margin-top: 10px;
+    background: white;
+    border-radius: 10px;
+    max-height: 320px;
+    overflow-y: auto;
+    box-shadow: 0px 4px 10px var(--apple-shadow);
+}
+
+/* Search Result Items */
+.search-result-item {
+    padding: 14px;
+    cursor: pointer;
+    transition: background 0.2s ease-in-out, transform 0.2s ease-in-out;
+    opacity: 0;
+    transform: translateY(10px);
+    font-size: 16px;
+}
+
+/* Hover & Selection */
+.search-result-item.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+
+.search-result-item:hover {
+    background: var(--apple-hover-gray);
+    transform: scale(1.02);
 }
